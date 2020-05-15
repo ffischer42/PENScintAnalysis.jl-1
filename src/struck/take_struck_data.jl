@@ -55,7 +55,7 @@ function take_struck_data(settings::NamedTuple; calibration_data::Bool=false)
     chmod(pwd(), 0o777, recursive=true)
     i = 1
     while i <= settings.number_of_measurements
-        chmod("./", 0o777)
+        #chmod("./", 0o777)
         @suppress run(`./pmt_daq_dont_move.scala`);
         next!(p)
         i += 1
