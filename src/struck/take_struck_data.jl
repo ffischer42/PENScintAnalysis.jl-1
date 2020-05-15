@@ -50,9 +50,10 @@ function take_struck_data(settings::NamedTuple; calibration_data::Bool=false)
     current_dir = pwd()
     cd(settings.data_dir)
     create_struck_daq_file(settings, calibration_measurement=calibration_data)
+    @info("ok create struct")
     t_start = stat("pmt_daq_dont_move.scala").mtime
     p = Progress(settings.number_of_measurements, 1, "Measurement ongoing...", 50)
-    chmod(pwd(), 0o777, recursive=true)
+    #chmod(pwd(), 0o777, recursive=true)
     i = 1
     while i <= settings.number_of_measurements
         #chmod("./", 0o777)
