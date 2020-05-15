@@ -31,10 +31,10 @@ Creates an individual `pmt_daq.scala` file and takes data which are converted to
 function take_struck_data(settings::NamedTuple; calibration_data::Bool=false)
     @info("Updated: 2020-05-15 14:08")
     if !isdir(settings.data_dir)
-        mkpath(settings.data_dir, mode = 0o777)
+        mkpath(settings.data_dir)
     end
     if !isdir(settings.conv_data_dir)
-        mkpath(settings.conv_data_dir, mode = 0o777)
+        mkpath(settings.conv_data_dir)
     end
     if !calibration_data
         if typeof(settings.trigger_pmt) != Int64 || typeof(settings.trigger_threshold) != Int64
