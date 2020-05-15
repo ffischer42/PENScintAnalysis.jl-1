@@ -33,6 +33,7 @@ function take_struck_data(settings::NamedTuple; calibration_data::Bool=false)
     if !isdir(settings.data_dir)
         mkpath(settings.data_dir)
     end
+    @info("Segundo if ")
     if !isdir(settings.conv_data_dir)
         mkpath(settings.conv_data_dir)
     end
