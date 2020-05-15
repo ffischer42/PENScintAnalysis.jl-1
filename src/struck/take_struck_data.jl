@@ -29,7 +29,7 @@ Creates an individual `pmt_daq.scala` file and takes data which are converted to
 ...
 """
 function take_struck_data(settings::NamedTuple; calibration_data::Bool=false)
-    @info("Updated: 2020-05-15 14:08")
+    #@info("Updated: 2020-05-15 14:08")
     if !isdir(settings.data_dir)
         mkpath(settings.data_dir, mode = 0o777)
     end
@@ -50,15 +50,15 @@ function take_struck_data(settings::NamedTuple; calibration_data::Bool=false)
     create_struck_daq_file(settings, calibration_measurement=calibration_data)
     t_start = stat("pmt_daq_dont_move.scala").mtime
     p = Progress(settings.number_of_measurements, 1, "Measurement ongoing...", 50)
-    #chmod(pwd(), 0o777, recursive=true)
+    chmod(pwd(), 0o777, recursive=true)
     i = 1
     while i <= settings.number_of_measurements
-        #chmod("./", 0o777)
+        chmod("./", 0o777)
         @suppress run(`./pmt_daq_dont_move.scala`);
         next!(p)
         i += 1
     end
-    #chmod(pwd(), 0o777, recursive=true)
+    chmod(pwd(), 0o777, recursive=true)
     files = glob(settings.output_basename*"*.dat")
     new_files = []
     i = 1
@@ -108,7 +108,7 @@ function take_struck_data(settings::NamedTuple; calibration_data::Bool=false)
     end
     rm("pmt_daq_dont_move.scala")
     cd(settings.conv_data_dir)
-    #chmod(pwd(), 0o777, recursive=true)
+    chmod(pwd(), 0o777, recursive=true)
     
     cd(current_dir)
 end
