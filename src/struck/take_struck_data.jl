@@ -53,8 +53,9 @@ function take_struck_data(settings::NamedTuple; calibration_data::Bool=false)
     @info("ok create struct")
     t_start = stat("pmt_daq_dont_move.scala").mtime
     p = Progress(settings.number_of_measurements, 1, "Measurement ongoing...", 50)
-    #chmod(pwd(), 0o777, recursive=true)
+    chmod(pwd(), 0o777, recursive=true)
     i = 1
+    @info("before while loop")
     while i <= settings.number_of_measurements
         #chmod("./", 0o777)
         @suppress run(`./pmt_daq_dont_move.scala`);
