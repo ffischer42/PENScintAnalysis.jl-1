@@ -15,7 +15,7 @@ Plots
 ProgressMeter
 Query
 RecipesBase
-SIS3316Digitizers
+StruckVMEDevices
 StatsBase
 StructArrays
 Suppressor
