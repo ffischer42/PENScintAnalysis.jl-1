@@ -25,7 +25,7 @@ using ProgressMeter
 using Plots
 using Query
 using RecipesBase
-using StruckVMEDevices
+using SIS3316Digitizers
 using StatsBase
 using StructArrays
 using Suppressor

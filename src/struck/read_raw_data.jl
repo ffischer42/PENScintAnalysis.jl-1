@@ -23,7 +23,7 @@ function read_data_from_struck(filename::String; filter_faulty_events=false, coi
     energy  = []
         
     input = open(CompressedFile(filename))
-    reader = eachchunk(input, StruckVMEDevices.UnsortedEvents)
+    reader = eachchunk(input, SIS3316Digitizers.UnsortedEvents)
 
     sorted = 0
     nchunks = 0
@@ -81,7 +81,7 @@ function read_data_from_struck(filenames; filter_faulty_events=false, coincidenc
     
     for filename in filenames
         input = open(CompressedFile(filename))
-        reader = eachchunk(input, StruckVMEDevices.UnsortedEvents) 
+        reader = eachchunk(input, SIS3316Digitizers.UnsortedEvents) 
 
         sorted = 0
         nchunks = 0
@@ -141,7 +141,7 @@ Reads one Struck (*.dat) file and returns a DataFrame. Keys: channel, timestamp,
 function read_raw_data(filename::String; nevents::Int=typemax(Int))
 
     input = open(CompressedFile(filename))
-    reader = eachchunk(input, StruckVMEDevices.UnsortedEvents)
+    reader = eachchunk(input, SIS3316Digitizers.UnsortedEvents)
     df = DataFrame(
         evt_t   = Float64[],
         samples = Array{Int32,1}[],
@@ -183,7 +183,7 @@ function read_raw_data(filenames; nevents=typemax(Int))
     
     for filename in filenames
         input = open(CompressedFile(filename))
-        reader = eachchunk(input, StruckVMEDevices.UnsortedEvents)
+        reader = eachchunk(input, SIS3316Digitizers.UnsortedEvents)
         df = DataFrame(
             evt_t   = Float64[],
             samples = Array{Int32,1}[],
