@@ -14,7 +14,7 @@ It will return a dictionary of the missed positions, if there are any.
 ...
 """
 
-function PENBBScan2D(settings <: Dict, start <: Vector, step <: Vector, ends <: Vector, HolderName::String, motor)
+function PENBBScan2D(settings, start, stepr, ends, HolderName, motor)
     missed_positions = Dict()
     missed_positions["x"] = []
     missed_positions["y"] = []
