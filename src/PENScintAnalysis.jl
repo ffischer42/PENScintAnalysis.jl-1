@@ -31,6 +31,7 @@ using StructArrays
 using Suppressor
 using TypedTables
 using UnsafeArrays
+using PENBBControl
 
 include("util/util.jl")
 include("struck/read_raw_data.jl")
