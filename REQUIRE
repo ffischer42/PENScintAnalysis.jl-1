@@ -12,6 +12,7 @@ LegendHDF5IO
 LinearAlgebra
 ParallelProcessingTools
 Plots
+PENBBControl
 ProgressMeter
 Query
 RecipesBase
