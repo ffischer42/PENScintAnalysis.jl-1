@@ -21,7 +21,6 @@ using LinearAlgebra
 using LegendHDF5IO
 using LegendHDF5IO: readdata, writedata
 using ParallelProcessingTools
-using PENBBControl
 using ProgressMeter
 using Plots
 using Query
