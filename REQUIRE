@@ -8,6 +8,7 @@ DSP
 ElasticArrays
 Glob
 HDF5
+IJulia
 LegendHDF5IO
 LinearAlgebra
 ParallelProcessingTools
