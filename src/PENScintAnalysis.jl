@@ -21,6 +21,7 @@ using LinearAlgebra
 using LegendHDF5IO
 using LegendHDF5IO: readdata, writedata
 using ParallelProcessingTools
+using PENBBControl
 using ProgressMeter
 using Plots
 using Query
@@ -39,6 +40,7 @@ include("struck/create_struck_daq_file.jl")
 include("hdf5/hdf5tools.jl")
 include("pmt_dsp.jl")
 include("6pmt_util/events.jl")
+include("6pmt_util/PENBBScan2D.jl")
 include("util/stat_functions.jl")
 include("util/dataproc.jl")
 include("util/plot.jl")
@@ -58,12 +60,6 @@ export get_h5_info_old, getUserInput, readh5, read_old_h5_structure, writeh5
 export findLocalMaxima, getBaseline, peakIntegral, wfIntegral
 
 # 6-PMT setup related functions
-export sort_by_events
+export sort_by_events, PENBBScan2D
 
-end # module
-
-#=
-file = "/remote/ceph/group/gedet/data/pen/2019/2019-01-25_dc441dd3_lm_6_pmt_calibration_measurements/raw_data/SiPM_laser_max/sipm_56_intern-20190304T093145Z-raw.dat"
-raw = read_raw_data([file],10)
-precalibrate_data(raw)
-=#
+end 
