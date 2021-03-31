@@ -10,11 +10,12 @@ It will return a dictionary of the missed positions, if there are any.
 - `step<:Vector`: Vector of step size e.g. [x_step,y_step] = [1.0,1.0]
 - `ends<:Vector`: Vector of end position e.g. [x_end,y_end] = [90.0,90.0]
 - `motor`: IO connection to the motorized stage
+- `notebook::Bool=false`: Set to true if you take data using a Juypter notebook
 
 ...
 """
 
-function PENBBScan2D(settings, start, stepr, ends, HolderName, motor)
+function PENBBScan2D(settings, start, step, ends, HolderName, motor; notebook=false)
     missed_positions = Dict()
     missed_positions["x"] = []
     missed_positions["y"] = []
@@ -49,7 +50,7 @@ function PENBBScan2D(settings, start, stepr, ends, HolderName, motor)
 
                 #
                 ## Sorting the output files in directories
-                name_file = string("2D_PEN_Scan_Holder_",HolderName,"_x_",pos_x,"_y_",pos_y,"_of_",time_per_point,"_seconds")
+                name_file = string("2D_PEN_Scan_Holder_",HolderName,"_x_",pos_x,"_y_",pos_y,"_of_",settings["measurement_time"],"_seconds")
                 output_dir = settings["conv_data_dir"] * string("/", HolderName, "/x_",pos_x)
                 
                 #
@@ -105,7 +106,11 @@ function PENBBScan2D(settings, start, stepr, ends, HolderName, motor)
                 
                 sleep(2)
                 # Clear output to reduce memory taken by notebook
-                IJulia.clear_output(true)
+                if notebook
+                    IJulia.clear_output(true)
+                else
+                    Base.run(`clear`)
+                end                
             end
         end
         @info("PEN BB 2D scan completed, see you soon!")
