@@ -17,6 +17,7 @@ using DSP
 using ElasticArrays
 using Glob
 using HDF5
+using IJulia
 using LinearAlgebra
 using LegendHDF5IO
 using LegendHDF5IO: readdata, writedata
