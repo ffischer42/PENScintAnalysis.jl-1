@@ -14,12 +14,12 @@ It will return a dictionary of the missed positions, if there are any.
 
 ...
 """
-
 function PENBBScan2D(settings, start, step, ends, HolderName, motor; notebook=false)
     missed_positions = Dict()
     missed_positions["x"] = []
     missed_positions["y"] = []
     start_t = now()
+    cur_dir = pwd()
     if start[1] < 0.0 || start[2] < 0.0 || ends[1] > 100.0 || ends[2] > 100.0
         @info("Error: value out of range: you have to use values in the range x[0.,10.], y[0.,10.]")
     else
@@ -97,11 +97,14 @@ function PENBBScan2D(settings, start, step, ends, HolderName, motor; notebook=fa
                 # For this, it throws and error to task t
                 if istaskdone(t) == false || ts < settings["measurement_time"]
                     @async Base.throwto(t, EOFError())
+                    cd(cur_dir)
                     push!(missed_positions["x"], i)
                     push!(missed_positions["y"], j)
-                    open(joinpath(dir, "missing_log_" * HolderName * ".json"),  "w") do f
+                    open("missing_log_" * HolderName * ".json",  "w") do f
                         JSON.print(f, missed_positions, 4)
                     end
+                else
+                    cd(cur_dir)
                 end
                 
                 sleep(2)
