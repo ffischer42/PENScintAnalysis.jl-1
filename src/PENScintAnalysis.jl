@@ -18,6 +18,7 @@ using ElasticArrays
 using Glob
 using HDF5
 using IJulia
+using JSON
 using LinearAlgebra
 using LegendHDF5IO
 using LegendHDF5IO: readdata, writedata
