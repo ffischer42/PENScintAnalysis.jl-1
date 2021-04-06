@@ -15,6 +15,9 @@ It will return a dictionary of the missed positions, if there are any.
 ...
 """
 function PENBBScan2D(settings, start, step, ends, HolderName, motor; notebook=false)
+    # Login for HV control
+    login_payload= JSON.json(Dict("i"=>"", "t" => "login", "c"=> Dict("l"=>"admin", "p"=>"ep4ever", "t" => ""), "r" => "websocket"))
+
     missed_positions = Dict()
     missed_positions["x"] = []
     missed_positions["y"] = []
@@ -77,7 +80,7 @@ function PENBBScan2D(settings, start, step, ends, HolderName, motor; notebook=fa
                 println(name_file)
                 #
                 ## Create asynchronous task for data taking
-                t = @async try take_struck_data(settings_nt, calibration_data=false)
+                t = @async try take_struck_data(settings_nt, calibration_data=settings["calibration_data"])
                     catch e 
                     println("stopped on $e") 
                 end
