@@ -9,6 +9,7 @@ ElasticArrays
 Glob
 HDF5
 IJulia
+JSON
 LegendHDF5IO
 LinearAlgebra
 ParallelProcessingTools
