@@ -287,13 +287,12 @@ version = "1.0.3"
 [[SHA]]
 uuid = "ea8e919c-243c-51af-8825-aaa63cd721ce"
 
-[[SIS3316]]
+[[StruckVMEDevices]]
 deps = ["BitOperations", "Compat"]
-git-tree-sha1 = "5611bb3eb755d0e1449a3b5c01cb891ca99e5e25"
 repo-rev = "master"
-repo-url = "https://github.com/daqcore/SIS3316.jl"
-uuid = "e6ce62ec-21dd-50b1-a7fb-ee5abe804eba"
-version = "0.0.0"
+repo-url = "https://github.com/oschulz/StruckVMEDevices.jl"
+uuid = "69174580-7ee9-4dbc-9740-183fc008c76b"
+version = "0.1.0"
 
 [[Serialization]]
 uuid = "9e88b42a-f829-5b0c-bbe9-9e923198166b"
